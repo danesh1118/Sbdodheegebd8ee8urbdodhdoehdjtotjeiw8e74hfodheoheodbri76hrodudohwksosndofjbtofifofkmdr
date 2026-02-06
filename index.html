@@ -314,92 +314,284 @@
 
     <script>
         const serverConfigs = [
-            // 0 - سوئد
             {
-                "remarks":"🇸🇪",
-                "log":{"loglevel":"warning"},
-                "inbounds":[{"tag":"socks","port":10808,"protocol":"socks","settings":{"auth":"noauth","udp":true,"userLevel":8},"sniffing":{"enabled":true,"destOverride":["http","tls"],"routeOnly":false}}],
-                "outbounds":[{"tag":"proxy","protocol":"vless","settings":{"vnext":[{"address":"188.114.96.3","port":443,"users":[{"id":"396c904b-4b62-4334-b793-ee25fc0c61cc","level":8,"encryption":"none"}]}]},"streamSettings":{"network":"ws","security":"tls","wsSettings":{"path":"/eyJqdW5rIjoiTHczMWlhREZIb0ljUDhoaCIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbXX0=?ed=2560","headers":{"Host":"8vmU06cxdz59m931xnREgj8qpnoq1-06.pages.dev"}},"tlsSettings":{"allowInsecure":false,"serverName":"pages.dev","fingerprint":"chrome","show":false}},"mux":{"enabled":false,"concurrency":-1,"xudpConcurrency":8,"xudpProxyUDP443":""}},{"tag":"direct","protocol":"freedom","settings":{"domainStrategy":"UseIP"},"mux":{"enabled":false,"concurrency":8,"xudpConcurrency":8,"xudpProxyUDP443":""}},{"tag":"block","protocol":"blackhole","settings":{"response":{"type":"http"}},"mux":{"enabled":false,"concurrency":8,"xudpConcurrency":8,"xudpProxyUDP443":""}}],
-                "dns":{"servers":["1.1.1.1"],"hosts":{"domain:googleapis.cn":"googleapis.com","dns.alidns.com":["223.5.5.5","223.6.6.6","2400:3200::1","2400:3200:baba::1"],"one.one.one.one":["1.1.1.1","1.0.0.1","2606:4700:4700::1111","2606:4700:4700::1001"],"dot.pub":["1.12.12.12","120.53.53.53"],"dns.google":["8.8.8.8","8.8.4.4","2001:4860:4860::8888","2001:4860:4860::8844"],"dns.quad9.net":["9.9.9.9","149.112.112.112","2620:fe::fe","2620:fe::9"],"common.dot.dns.yandex.net":["77.88.8.8","77.88.8.1","2a02:6b8::feed:0ff","2a02:6b8:0:1::feed:0ff"]}},
-                "routing":{"domainStrategy":"IPIfNonMatch","rules":[{"type":"field","ip":["1.1.1.1"],"outboundTag":"proxy","port":"53"},{"type":"field","ip":["223.5.5.5"],"outboundTag":"direct","port":"53"},{"type":"field","ip":["1.1.1.1"],"outboundTag":"proxy","port":"53"},{"type":"field","ip":["223.5.5.5"],"outboundTag":"direct","port":"53"}]}
-            },
-
-            // 1 - فرانسه 1
-            {
-                "remarks":"🇫🇷",
-                "log":{"loglevel":"warning"},
-                "inbounds":[{"tag":"socks","port":10808,"protocol":"socks","settings":{"auth":"noauth","udp":true,"userLevel":8},"sniffing":{"enabled":true,"destOverride":["http","tls"],"routeOnly":false}}],
-                "outbounds":[{"tag":"proxy","protocol":"vless","settings":{"vnext":[{"address":"162.159.152.4","port":2096,"users":[{"id":"da406588-095f-4683-acc2-a3aa3aab68d6","level":8,"encryption":"none"}]}]},"streamSettings":{"network":"xhttp","security":"tls","xhttpSettings":{"path":"/","host":"fr1.itscdn.ir","mode":"auto"},"tlsSettings":{"allowInsecure":false,"serverName":"fr1.itscdn.ir","alpn":["h2"],"fingerprint":"chrome","show":false}},"mux":{"enabled":false,"concurrency":-1,"xudpConcurrency":8,"xudpProxyUDP443":""}},{"tag":"direct","protocol":"freedom","settings":{"domainStrategy":"UseIP"},"mux":{"enabled":false,"concurrency":8,"xudpConcurrency":8,"xudpProxyUDP443":""}},{"tag":"block","protocol":"blackhole","settings":{"response":{"type":"http"}},"mux":{"enabled":false,"concurrency":8,"xudpConcurrency":8,"xudpProxyUDP443":""}}],
-                "dns":{"servers":["1.1.1.1"],"hosts":{"domain:googleapis.cn":"googleapis.com","dns.alidns.com":["223.5.5.5","223.6.6.6","2400:3200::1","2400:3200:baba::1"],"one.one.one.one":["1.1.1.1","1.0.0.1","2606:4700:4700::1111","2606:4700:4700::1001"],"dot.pub":["1.12.12.12","120.53.53.53"],"dns.google":["8.8.8.8","8.8.4.4","2001:4860:4860::8888","2001:4860:4860::8844"],"dns.quad9.net":["9.9.9.9","149.112.112.112","2620:fe::fe","2620:fe::9"],"common.dot.dns.yandex.net":["77.88.8.8","77.88.8.1","2a02:6b8::feed:0ff","2a02:6b8:0:1::feed:0ff"]}},
-                "routing":{"domainStrategy":"IPIfNonMatch","rules":[{"type":"field","ip":["1.1.1.1"],"outboundTag":"proxy","port":"53"},{"type":"field","ip":["223.5.5.5"],"outboundTag":"direct","port":"53"},{"type":"field","ip":["1.1.1.1"],"outboundTag":"proxy","port":"53"},{"type":"field","ip":["223.5.5.5"],"outboundTag":"direct","port":"53"}]}
-            },
-
-            // 2 - آلمان 1
-            {
-                "remarks":"🇩🇪",
-                "log":{"loglevel":"warning"},
-                "inbounds":[{"tag":"socks","port":10808,"protocol":"socks","settings":{"auth":"noauth","udp":true,"userLevel":8},"sniffing":{"enabled":true,"destOverride":["http","tls"],"routeOnly":false}}],
-                "outbounds":[{"tag":"proxy","protocol":"vless","settings":{"vnext":[{"address":"172.64.149.99","port":8443,"users":[{"id":"2ddeb056-17d4-421e-a318-39428733d4a2","level":8,"encryption":"none"}]}]},"streamSettings":{"network":"ws","security":"tls","wsSettings":{"path":"/Telegram@V2rayAlpha/?ed=2048","headers":{"Host":"8p3cfl0ripm.zjde5.de5.net"}},"tlsSettings":{"allowInsecure":false,"serverName":"8p3cfl0ripm.zjde5.de5.net","alpn":["http/1.1"],"fingerprint":"chrome","show":false}},"mux":{"enabled":false,"concurrency":-1,"xudpConcurrency":8,"xudpProxyUDP443":""}},{"tag":"direct","protocol":"freedom","settings":{"domainStrategy":"UseIP"},"mux":{"enabled":false,"concurrency":8,"xudpConcurrency":8,"xudpProxyUDP443":""}},{"tag":"block","protocol":"blackhole","settings":{"response":{"type":"http"}},"mux":{"enabled":false,"concurrency":8,"xudpConcurrency":8,"xudpProxyUDP443":""}}],
-                "dns":{"servers":["1.1.1.1"],"hosts":{"domain:googleapis.cn":"googleapis.com","dns.alidns.com":["223.5.5.5","223.6.6.6","2400:3200::1","2400:3200:baba::1"],"one.one.one.one":["1.1.1.1","1.0.0.1","2606:4700:4700::1111","2606:4700:4700::1001"],"dot.pub":["1.12.12.12","120.53.53.53"],"dns.google":["8.8.8.8","8.8.4.4","2001:4860:4860::8888","2001:4860:4860::8844"],"dns.quad9.net":["9.9.9.9","149.112.112.112","2620:fe::fe","2620:fe::9"],"common.dot.dns.yandex.net":["77.88.8.8","77.88.8.1","2a02:6b8::feed:0ff","2a02:6b8:0:1::feed:0ff"]}},
-                "routing":{"domainStrategy":"IPIfNonMatch","rules":[{"type":"field","ip":["1.1.1.1"],"outboundTag":"proxy","port":"53"},{"type":"field","ip":["223.5.5.5"],"outboundTag":"direct","port":"53"},{"type":"field","ip":["1.1.1.1"],"outboundTag":"proxy","port":"53"},{"type":"field","ip":["223.5.5.5"],"outboundTag":"direct","port":"53"}]}
-            },
-
-            // 3 - فرانسه 2
-            {
-                "remarks":"🇫🇷",
-                "log":{"loglevel":"warning"},
-                "inbounds":[{"tag":"socks","port":10808,"protocol":"socks","settings":{"auth":"noauth","udp":true,"userLevel":8},"sniffing":{"enabled":true,"destOverride":["http","tls"],"routeOnly":false}}],
-                "outbounds":[{"tag":"proxy","protocol":"vless","settings":{"vnext":[{"address":"OV-France1.09vpn.com","port":80,"users":[{"id":"25f86cb1-2140-4085-abcb-c3a0ea7a4be0","level":8,"encryption":"none"}]}]},"streamSettings":{"network":"ws","wsSettings":{"path":"/vless/","headers":{"Host":""}}},"mux":{"enabled":false,"concurrency":-1,"xudpConcurrency":8,"xudpProxyUDP443":""}},{"tag":"direct","protocol":"freedom","settings":{"domainStrategy":"UseIP"},"mux":{"enabled":false,"concurrency":8,"xudpConcurrency":8,"xudpProxyUDP443":""}},{"tag":"block","protocol":"blackhole","settings":{"response":{"type":"http"}},"mux":{"enabled":false,"concurrency":8,"xudpConcurrency":8,"xudpProxyUDP443":""}}],
-                "dns":{"servers":["1.1.1.1"],"hosts":{"domain:googleapis.cn":"googleapis.com","dns.alidns.com":["223.5.5.5","223.6.6.6","2400:3200::1","2400:3200:baba::1"],"one.one.one.one":["1.1.1.1","1.0.0.1","2606:4700:4700::1111","2606:4700:4700::1001"],"dot.pub":["1.12.12.12","120.53.53.53"],"dns.google":["8.8.8.8","8.8.4.4","2001:4860:4860::8888","2001:4860:4860::8844"],"dns.quad9.net":["9.9.9.9","149.112.112.112","2620:fe::fe","2620:fe::9"],"common.dot.dns.yandex.net":["77.88.8.8","77.88.8.1","2a02:6b8::feed:0ff","2a02:6b8:0:1::feed:0ff"]}},
-                "routing":{"domainStrategy":"IPIfNonMatch","rules":[{"type":"field","ip":["1.1.1.1"],"outboundTag":"proxy","port":"53"},{"type":"field","ip":["223.5.5.5"],"outboundTag":"direct","port":"53"},{"type":"field","ip":["1.1.1.1"],"outboundTag":"proxy","port":"53"},{"type":"field","ip":["223.5.5.5"],"outboundTag":"direct","port":"53"}]}
-            },
-
-            // 4 - آذربایجان trojan
-            {
-                "remarks":"🇦🇿",
-                "log":{"loglevel":"warning"},
-                "inbounds":[{"tag":"socks","port":10808,"protocol":"socks","settings":{"auth":"noauth","udp":true,"userLevel":8},"sniffing":{"enabled":true,"destOverride":["http","tls"],"routeOnly":false}}],
-                "outbounds":[{"tag":"proxy","protocol":"trojan","settings":{"servers":[{"address":"94.140.0.1","ota":false,"password":"bpb-trojan","port":443,"level":8}]},"streamSettings":{"network":"ws","security":"tls","wsSettings":{"path":"/tr?ed=2560","headers":{"Host":"singbox.lu567890.us.kg"}},"tlsSettings":{"allowInsecure":false,"serverName":"singbox.lu567890.us.kg","fingerprint":"chrome","show":false}},"mux":{"enabled":false,"concurrency":-1,"xudpConcurrency":8,"xudpProxyUDP443":""}},{"tag":"direct","protocol":"freedom","settings":{"domainStrategy":"UseIP"},"mux":{"enabled":false,"concurrency":8,"xudpConcurrency":8,"xudpProxyUDP443":""}},{"tag":"block","protocol":"blackhole","settings":{"response":{"type":"http"}},"mux":{"enabled":false,"concurrency":8,"xudpConcurrency":8,"xudpProxyUDP443":""}}],
-                "dns":{"servers":["1.1.1.1"],"hosts":{"domain:googleapis.cn":"googleapis.com","dns.alidns.com":["223.5.5.5","223.6.6.6","2400:3200::1","2400:3200:baba::1"],"one.one.one.one":["1.1.1.1","1.0.0.1","2606:4700:4700::1111","2606:4700:4700::1001"],"dot.pub":["1.12.12.12","120.53.53.53"],"dns.google":["8.8.8.8","8.8.4.4","2001:4860:4860::8888","2001:4860:4860::8844"],"dns.quad9.net":["9.9.9.9","149.112.112.112","2620:fe::fe","2620:fe::9"],"common.dot.dns.yandex.net":["77.88.8.8","77.88.8.1","2a02:6b8::feed:0ff","2a02:6b8:0:1::feed:0ff"]}},
-                "routing":{"domainStrategy":"IPIfNonMatch","rules":[{"type":"field","ip":["1.1.1.1"],"outboundTag":"proxy","port":"53"},{"type":"field","ip":["223.5.5.5"],"outboundTag":"direct","port":"53"},{"type":"field","ip":["1.1.1.1"],"outboundTag":"proxy","port":"53"},{"type":"field","ip":["223.5.5.5"],"outboundTag":"direct","port":"53"}]}
-            },
-
-            // 5 - آلمان 2 (قبلی)
-            {
-                "remarks":"🇩🇪",
-                "log":{"loglevel":"warning"},
-                "inbounds":[{"tag":"socks","port":10808,"protocol":"socks","settings":{"auth":"noauth","udp":true,"userLevel":8},"sniffing":{"enabled":true,"destOverride":["http","tls"],"routeOnly":false}}],
-                "outbounds":[{"tag":"proxy","protocol":"vless","settings":{"vnext":[{"address":"chatgpt.com","port":80,"users":[{"id":"ba2bb9d8-9baa-45d6-9e0a-38c9cb6a6a9a","level":8,"encryption":"none"}]}]},"streamSettings":{"network":"ws","wsSettings":{"path":"/?ed"},"headers":{"Host":"WeaK-preSSUrE3Ga6bzof92.sPorTlaNd.coMPANY."}},"mux":{"enabled":false,"concurrency":-1,"xudpConcurrency":8,"xudpProxyUDP443":""}},{"tag":"direct","protocol":"freedom","settings":{"domainStrategy":"UseIP"},"mux":{"enabled":false,"concurrency":8,"xudpConcurrency":8,"xudpProxyUDP443":""}},{"tag":"block","protocol":"blackhole","settings":{"response":{"type":"http"}},"mux":{"enabled":false,"concurrency":8,"xudpConcurrency":8,"xudpProxyUDP443":""}}],
-                "dns":{"servers":["1.1.1.1"],"hosts":{"domain:googleapis.cn":"googleapis.com","dns.alidns.com":["223.5.5.5","223.6.6.6","2400:3200::1","2400:3200:baba::1"],"one.one.one.one":["1.1.1.1","1.0.0.1","2606:4700:4700::1111","2606:4700:4700::1001"],"dot.pub":["1.12.12.12","120.53.53.53"],"dns.google":["8.8.8.8","8.8.4.4","2001:4860:4860::8888","2001:4860:4860::8844"],"dns.quad9.net":["9.9.9.9","149.112.112.112","2620:fe::fe","2620:fe::9"],"common.dot.dns.yandex.net":["77.88.8.8","77.88.8.1","2a02:6b8::feed:0ff","2a02:6b8:0:1::feed:0ff"]}},
-                "routing":{"domainStrategy":"IPIfNonMatch","rules":[{"type":"field","ip":["1.1.1.1"],"outboundTag":"proxy","port":"53"},{"type":"field","ip":["223.5.5.5"],"outboundTag":"direct","port":"53"},{"type":"field","ip":["1.1.1.1"],"outboundTag":"proxy","port":"53"},{"type":"field","ip":["223.5.5.5"],"outboundTag":"direct","port":"53"}]}
-            },
-
-            // 6 - آلمان جدید ۱ (از آخرین پیام)
-            {
-                "remarks": "🇩🇪",
-                "log": {"loglevel": "warning"},
+                "dns": {
+                    "hosts": {
+                        "domain:googleapis.cn": "googleapis.com",
+                        "dns.alidns.com": ["223.5.5.5","223.6.6.6","2400:3200::1","2400:3200:baba::1"],
+                        "one.one.one.one": ["1.1.1.1","1.0.0.1","2606:4700:4700::1111","2606:4700:4700::1001"],
+                        "dns.cloudflare.com": ["104.16.132.229","104.16.133.229","2606:4700::6810:84e5","2606:4700::6810:85e5"],
+                        "cloudflare-dns.com": ["104.16.248.249","104.16.249.249","2606:4700::6810:f8f9","2606:4700::6810:f9f9"],
+                        "dot.pub": ["1.12.12.12","120.53.53.53"],
+                        "dns.google": ["8.8.8.8","8.8.4.4","2001:4860:4860::8888","2001:4860:4860::8844"],
+                        "dns.quad9.net": ["9.9.9.9","149.112.112.112","2620:fe::fe","2620:fe::9"],
+                        "common.dot.dns.yandex.net": ["77.88.8.8","77.88.8.1","2a02:6b8::feed:0ff","2a02:6b8:0:1::feed:0ff"]
+                    },
+                    "servers": [
+                        "1.1.1.1",
+                        {"address": "1.1.1.1", "domains": ["domain:googleapis.cn","domain:gstatic.com"]},
+                        {"address": "223.5.5.5", "domains": ["domain:alidns.com","domain:doh.pub","domain:dot.pub","domain:360.cn","domain:onedns.net","geosite:cn"], "expectIPs": ["geoip:cn"], "skipFallback": true}
+                    ]
+                },
                 "inbounds": [{"listen": "127.0.0.1","port": 10808,"protocol": "socks","settings": {"auth": "noauth","udp": true,"userLevel": 8},"sniffing": {"destOverride": ["http","tls"],"enabled": true,"routeOnly": false},"tag": "socks"}],
-                "outbounds": [{"mux": {"concurrency": -1,"enabled": false},"protocol": "vless","settings": {"vnext": [{"address": "188.114.98.0","port": 2053,"users": [{"encryption": "none","flow": "","id": "42c63fdd-8f5f-42c5-8327-4fc7f80de4c2","level": 8}]}]},"streamSettings": {"network": "ws","security": "tls","tlsSettings": {"allowInsecure": false,"fingerprint": "chrome","serverName": "hz.badomzamini.uk","show": false},"wsSettings": {"headers": {"Host": "hz.badomzamini.uk"},"path": "/latest?ed=2560"}},"tag": "proxy"},{"protocol": "freedom","settings": {"domainStrategy": "UseIP"},"tag": "direct"},{"protocol": "blackhole","settings": {"response": {"type": "http"}},"tag": "block"}],
-                "dns": {"hosts": {"domain:googleapis.cn": "googleapis.com","dns.alidns.com": ["223.5.5.5","223.6.6.6","2400:3200::1","2400:3200:baba::1"],"one.one.one.one": ["1.1.1.1","1.0.0.1","2606:4700:4700::1111","2606:4700:4700::1001"],"dns.cloudflare.com": ["104.16.132.229","104.16.133.229","2606:4700::6810:84e5","2606:4700::6810:85e5"],"cloudflare-dns.com": ["104.16.248.249","104.16.249.249","2606:4700::6810:f8f9","2606:4700::6810:f9f9"],"dot.pub": ["1.12.12.12","120.53.53.53"],"dns.google": ["8.8.8.8","8.8.4.4","2001:4860:4860::8888","2001:4860:4860::8844"],"dns.quad9.net": ["9.9.9.9","149.112.112.112","2620:fe::fe","2620:fe::9"],"common.dot.dns.yandex.net": ["77.88.8.8","77.88.8.1","2a02:6b8::feed:0ff","2a02:6b8:0:1::feed:0ff"]},"servers": ["1.1.1.1",{"address": "1.1.1.1","domains": ["domain:googleapis.cn","domain:gstatic.com"]},{"address": "223.5.5.5","domains": ["domain:alidns.com","domain:doh.pub","domain:dot.pub","domain:360.cn","domain:onedns.net","geosite:cn"],"expectIPs": ["geoip:cn"],"skipFallback": true}]},
+                "log": {"loglevel": "warning"},
+                "outbounds": [
+                    {"mux": {"concurrency": -1,"enabled": false},"protocol": "vless","settings": {"vnext": [{"address": "45.82.251.208","port": 8880,"users": [{"encryption": "none","flow": "","id": "8dc7722c-2767-4eea-a28b-2f8daacc07e3","level": 8}]}]},"streamSettings": {"grpcSettings": {"authority": "","health_check_timeout": 20,"idle_timeout": 60,"multiMode": false,"serviceName": ""},"network": "grpc"},"tag": "proxy"},
+                    {"protocol": "freedom","settings": {"domainStrategy": "UseIP"},"tag": "direct"},
+                    {"protocol": "blackhole","settings": {"response": {"type": "http"}},"tag": "block"}
+                ],
+                "remarks": "Cybrus 🇨🇾",
                 "routing": {"domainStrategy": "AsIs","rules": [{"ip": ["1.1.1.1"],"outboundTag": "proxy","port": "53","type": "field"},{"ip": ["223.5.5.5"],"outboundTag": "direct","port": "53","type": "field"},{"domain": ["domain:googleapis.cn","domain:gstatic.com"],"outboundTag": "proxy","type": "field"},{"network": "udp","outboundTag": "block","port": "443","type": "field"},{"ip": ["geoip:private"],"outboundTag": "direct","type": "field"},{"domain": ["geosite:private"],"outboundTag": "direct","type": "field"},{"ip": ["223.5.5.5","223.6.6.6","2400:3200::1","2400:3200:baba::1","119.29.29.29","1.12.12.12","120.53.53.53","2402:4e00::","2402:4e00:1::","180.76.76.76","2400:da00::6666","114.114.114.114","114.114.115.115","114.114.114.119","114.114.115.119","114.114.114.110","114.114.115.110","180.184.1.1","180.184.2.2","101.226.4.6","218.30.118.6","123.125.81.6","140.207.198.6","1.2.4.8","210.2.4.8","52.80.66.66","117.50.22.22","2400:7fc0:849e:200::4","2404:c2c0:85d8:901::4","117.50.10.10","52.80.52.52","2400:7fc0:849e:200::8","2404:c2c0:85d8:901::8","117.50.60.30","52.80.60.30"],"outboundTag": "direct","type": "field"},{"domain": ["domain:alidns.com","domain:doh.pub","domain:dot.pub","domain:360.cn","domain:onedns.net"],"outboundTag": "direct","type": "field"},{"ip": ["geoip:cn"],"outboundTag": "direct","type": "field"},{"domain": ["geosite:cn"],"outboundTag": "direct","type": "field"}]}
             },
 
-            // 7 - آلمان جدید ۲ (آخرین)
             {
-                "remarks": "🇩🇪",
+                "dns": {
+                    "hosts": {
+                        "domain:googleapis.cn": "googleapis.com",
+                        "dns.alidns.com": ["223.5.5.5","223.6.6.6","2400:3200::1","2400:3200:baba::1"],
+                        "one.one.one.one": ["1.1.1.1","1.0.0.1","2606:4700:4700::1111","2606:4700:4700::1001"],
+                        "dns.cloudflare.com": ["104.16.132.229","104.16.133.229","2606:4700::6810:84e5","2606:4700::6810:85e5"],
+                        "cloudflare-dns.com": ["104.16.248.249","104.16.249.249","2606:4700::6810:f8f9","2606:4700::6810:f9f9"],
+                        "dot.pub": ["1.12.12.12","120.53.53.53"],
+                        "dns.google": ["8.8.8.8","8.8.4.4","2001:4860:4860::8888","2001:4860:4860::8844"],
+                        "dns.quad9.net": ["9.9.9.9","149.112.112.112","2620:fe::fe","2620:fe::9"],
+                        "common.dot.dns.yandex.net": ["77.88.8.8","77.88.8.1","2a02:6b8::feed:0ff","2a02:6b8:0:1::feed:0ff"],
+                        "www.speedtest.net": ["104.17.147.22","104.17.148.22"]
+                    },
+                    "servers": [
+                        "1.1.1.1",
+                        {"address": "1.1.1.1", "domains": ["domain:googleapis.cn","domain:gstatic.com"]},
+                        {"address": "223.5.5.5", "domains": ["domain:alidns.com","domain:doh.pub","domain:dot.pub","domain:360.cn","domain:onedns.net","geosite:cn"], "expectIPs": ["geoip:cn"], "skipFallback": true}
+                    ]
+                },
+                "inbounds": [{"listen": "127.0.0.1","port": 10808,"protocol": "socks","settings": {"auth": "noauth","udp": true,"userLevel": 8},"sniffing": {"destOverride": ["http","tls"],"enabled": true,"routeOnly": false},"tag": "socks"}],
                 "log": {"loglevel": "warning"},
-                "inbounds": [{"tag": "socks", "port": 10808, "protocol": "socks", "settings": {"auth": "noauth", "udp": true, "userLevel": 8}, "sniffing": {"enabled": true, "destOverride": ["http", "tls"], "routeOnly": false}}],
-                "outbounds": [{"tag": "proxy", "protocol": "vless", "settings": {"vnext": [{"address": "188.114.98.0", "port": 443, "users": [{"id": "4525c260-df3c-4f62-b8f1-f4f5f305694b", "level": 8, "encryption": "none"}]}]}, "streamSettings": {"network": "ws", "security": "tls", "tlsSettings": {"allowInsecure": false, "fingerprint": "chrome", "serverName": "yyzsuabw9e3qd5ud7ihi5dxm96oglnsvr83cjojnm1efncfhr9ucordq.zjde5.de5.net", "show": false}, "wsSettings": {"headers": {"Host": "yyzsuabw9e3qd5ud7ihi5dxm96oglnsvr83cjojnm1efncfhr9ucordq.zjde5.de5.net"}, "path": "/?ed=2560"}}, "mux": {"enabled": false, "concurrency": -1}}, {"tag": "direct", "protocol": "freedom", "settings": {"domainStrategy": "UseIP"}, "mux": {"enabled": false, "concurrency": 8, "xudpConcurrency": 8, "xudpProxyUDP443": ""}}, {"tag": "block", "protocol": "blackhole", "settings": {"response": {"type": "http"}}, "mux": {"enabled": false, "concurrency": 8, "xudpConcurrency": 8, "xudpProxyUDP443": ""}}],
-                "dns": {"servers": ["1.1.1.1"], "hosts": {"domain:googleapis.cn": "googleapis.com", "dns.alidns.com": ["223.5.5.5","223.6.6.6","2400:3200::1","2400:3200:baba::1"], "one.one.one.one": ["1.1.1.1","1.0.0.1","2606:4700:4700::1111","2606:4700:4700::1001"], "dot.pub": ["1.12.12.12","120.53.53.53"], "dns.google": ["8.8.8.8","8.8.4.4","2001:4860:4860::8888","2001:4860:4860::8844"], "dns.quad9.net": ["9.9.9.9","149.112.112.112","2620:fe::fe","2620:fe::9"], "common.dot.dns.yandex.net": ["77.88.8.8","77.88.8.1","2a02:6b8::feed:0ff","2a02:6b8:0:1::feed:0ff"]}},
-                "routing": {"domainStrategy": "IPIfNonMatch", "rules": [{"type": "field", "ip": ["1.1.1.1"], "outboundTag": "proxy", "port": "53"}, {"type": "field", "ip": ["223.5.5.5"], "outboundTag": "direct", "port": "53"}, {"type": "field", "ip": ["1.1.1.1"], "outboundTag": "proxy", "port": "53"}, {"type": "field", "ip": ["223.5.5.5"], "outboundTag": "direct", "port": "53"}]}
+                "outbounds": [
+                    {"mux": {"concurrency": -1,"enabled": false},"protocol": "vless","settings": {"vnext": [{"address": "www.speedtest.net","port": 443,"users": [{"encryption": "none","flow": "","id": "98d677be-b14b-4c14-a96b-4a39a3be645a","level": 8}]}]},"streamSettings": {"network": "ws","security": "tls","sockopt": {"domainStrategy": "UseIPv4v6"},"tlsSettings": {"allowInsecure": false,"alpn": ["http/1.1"],"fingerprint": "chrome","serverName": "t86y6leiyaph7tsvb170x7vfx0-3dvh3.vrezht08.workers.dev","show": false},"wsSettings": {"headers": {"Host": "t86y6leiyaph7tsvb170x7vfx0-3dvh3.vrezht08.workers.dev"},"path": "/eyJqdW5rIjoiZHJmTGlJSmciLCJwcm90b2NvbCI6InZsIiwibW9kZSI6InByb3h5aXAiLCJwYW5lbElQcyI6W119?ed"}},"tag": "proxy"},
+                    {"protocol": "freedom","settings": {"domainStrategy": "UseIP"},"tag": "direct"},
+                    {"protocol": "blackhole","settings": {"response": {"type": "http"}},"tag": "block"}
+                ],
+                "remarks": "USA 🇺🇲",
+                "routing": {"domainStrategy": "AsIs","rules": [{"ip": ["1.1.1.1"],"outboundTag": "proxy","port": "53","type": "field"},{"ip": ["223.5.5.5"],"outboundTag": "direct","port": "53","type": "field"},{"domain": ["domain:googleapis.cn","domain:gstatic.com"],"outboundTag": "proxy","type": "field"},{"network": "udp","outboundTag": "block","port": "443","type": "field"},{"ip": ["geoip:private"],"outboundTag": "direct","type": "field"},{"domain": ["geosite:private"],"outboundTag": "direct","type": "field"},{"ip": ["223.5.5.5","223.6.6.6","2400:3200::1","2400:3200:baba::1","119.29.29.29","1.12.12.12","120.53.53.53","2402:4e00::","2402:4e00:1::","180.76.76.76","2400:da00::6666","114.114.114.114","114.114.115.115","114.114.114.119","114.114.115.119","114.114.114.110","114.114.115.110","180.184.1.1","180.184.2.2","101.226.4.6","218.30.118.6","123.125.81.6","140.207.198.6","1.2.4.8","210.2.4.8","52.80.66.66","117.50.22.22","2400:7fc0:849e:200::4","2404:c2c0:85d8:901::4","117.50.10.10","52.80.52.52","2400:7fc0:849e:200::8","2404:c2c0:85d8:901::8","117.50.60.30","52.80.60.30"],"outboundTag": "direct","type": "field"},{"domain": ["domain:alidns.com","domain:doh.pub","domain:dot.pub","domain:360.cn","domain:onedns.net"],"outboundTag": "direct","type": "field"},{"ip": ["geoip:cn"],"outboundTag": "direct","type": "field"},{"domain": ["geosite:cn"],"outboundTag": "direct","type": "field"}]}
+            },
+
+            {
+                "dns": {
+                    "hosts": {
+                        "domain:googleapis.cn": "googleapis.com",
+                        "dns.alidns.com": ["223.5.5.5","223.6.6.6","2400:3200::1","2400:3200:baba::1"],
+                        "one.one.one.one": ["1.1.1.1","1.0.0.1","2606:4700:4700::1111","2606:4700:4700::1001"],
+                        "dns.cloudflare.com": ["104.16.132.229","104.16.133.229","2606:4700::6810:84e5","2606:4700::6810:85e5"],
+                        "cloudflare-dns.com": ["104.16.248.249","104.16.249.249","2606:4700::6810:f8f9","2606:4700::6810:f9f9"],
+                        "dot.pub": ["1.12.12.12","120.53.53.53"],
+                        "dns.google": ["8.8.8.8","8.8.4.4","2001:4860:4860::8888","2001:4860:4860::8844"],
+                        "dns.quad9.net": ["9.9.9.9","149.112.112.112","2620:fe::fe","2620:fe::9"],
+                        "common.dot.dns.yandex.net": ["77.88.8.8","77.88.8.1","2a02:6b8::feed:0ff","2a02:6b8:0:1::feed:0ff"]
+                    },
+                    "servers": [
+                        "1.1.1.1",
+                        {"address": "1.1.1.1", "domains": ["domain:googleapis.cn","domain:gstatic.com"]},
+                        {"address": "223.5.5.5", "domains": ["domain:alidns.com","domain:doh.pub","domain:dot.pub","domain:360.cn","domain:onedns.net","geosite:cn"], "expectIPs": ["geoip:cn"], "skipFallback": true}
+                    ]
+                },
+                "inbounds": [{"listen": "127.0.0.1","port": 10808,"protocol": "socks","settings": {"auth": "noauth","udp": true,"userLevel": 8},"sniffing": {"destOverride": ["http","tls"],"enabled": true,"routeOnly": false},"tag": "socks"}],
+                "log": {"loglevel": "warning"},
+                "outbounds": [
+                    {"mux": {"concurrency": -1,"enabled": false},"protocol": "vless","settings": {"vnext": [{"address": "172.66.128.70","port": 80,"users": [{"encryption": "none","flow": "","id": "6abc2840-25fd-4dd7-b1aa-0892fe98f2d9","level": 8}]}]},"streamSettings": {"network": "ws","wsSettings": {"headers": {"Host": "MySterIOUS-chECk94Bl5oXQ6C.eCoTOUriSs.cO.uK."},"path": "/?ed"}},"tag": "proxy"},
+                    {"protocol": "freedom","settings": {"domainStrategy": "UseIP"},"tag": "direct"},
+                    {"protocol": "blackhole","settings": {"response": {"type": "http"}},"tag": "block"}
+                ],
+                "remarks": "Canada 🇨🇦",
+                "routing": {"domainStrategy": "AsIs","rules": [{"ip": ["1.1.1.1"],"outboundTag": "proxy","port": "53","type": "field"},{"ip": ["223.5.5.5"],"outboundTag": "direct","port": "53","type": "field"},{"domain": ["domain:googleapis.cn","domain:gstatic.com"],"outboundTag": "proxy","type": "field"},{"network": "udp","outboundTag": "block","port": "443","type": "field"},{"ip": ["geoip:private"],"outboundTag": "direct","type": "field"},{"domain": ["geosite:private"],"outboundTag": "direct","type": "field"},{"ip": ["223.5.5.5","223.6.6.6","2400:3200::1","2400:3200:baba::1","119.29.29.29","1.12.12.12","120.53.53.53","2402:4e00::","2402:4e00:1::","180.76.76.76","2400:da00::6666","114.114.114.114","114.114.115.115","114.114.114.119","114.114.115.119","114.114.114.110","114.114.115.110","180.184.1.1","180.184.2.2","101.226.4.6","218.30.118.6","123.125.81.6","140.207.198.6","1.2.4.8","210.2.4.8","52.80.66.66","117.50.22.22","2400:7fc0:849e:200::4","2404:c2c0:85d8:901::4","117.50.10.10","52.80.52.52","2400:7fc0:849e:200::8","2404:c2c0:85d8:901::8","117.50.60.30","52.80.60.30"],"outboundTag": "direct","type": "field"},{"domain": ["domain:alidns.com","domain:doh.pub","domain:dot.pub","domain:360.cn","domain:onedns.net"],"outboundTag": "direct","type": "field"},{"ip": ["geoip:cn"],"outboundTag": "direct","type": "field"},{"domain": ["geosite:cn"],"outboundTag": "direct","type": "field"}]}
+            },
+
+            {
+                "dns": {
+                    "hosts": {
+                        "domain:googleapis.cn": "googleapis.com",
+                        "dns.alidns.com": ["223.5.5.5","223.6.6.6","2400:3200::1","2400:3200:baba::1"],
+                        "one.one.one.one": ["1.1.1.1","1.0.0.1","2606:4700:4700::1111","2606:4700:4700::1001"],
+                        "dns.cloudflare.com": ["104.16.132.229","104.16.133.229","2606:4700::6810:84e5","2606:4700::6810:85e5"],
+                        "cloudflare-dns.com": ["104.16.248.249","104.16.249.249","2606:4700::6810:f8f9","2606:4700::6810:f9f9"],
+                        "dot.pub": ["1.12.12.12","120.53.53.53"],
+                        "dns.google": ["8.8.8.8","8.8.4.4","2001:4860:4860::8888","2001:4860:4860::8844"],
+                        "dns.quad9.net": ["9.9.9.9","149.112.112.112","2620:fe::fe","2620:fe::9"],
+                        "common.dot.dns.yandex.net": ["77.88.8.8","77.88.8.1","2a02:6b8::feed:0ff","2a02:6b8:0:1::feed:0ff"]
+                    },
+                    "servers": [
+                        "1.1.1.1",
+                        {"address": "1.1.1.1", "domains": ["domain:googleapis.cn","domain:gstatic.com"]},
+                        {"address": "223.5.5.5", "domains": ["domain:alidns.com","domain:doh.pub","domain:dot.pub","domain:360.cn","domain:onedns.net","geosite:cn"], "expectIPs": ["geoip:cn"], "skipFallback": true}
+                    ]
+                },
+                "inbounds": [{"listen": "127.0.0.1","port": 10808,"protocol": "socks","settings": {"auth": "noauth","udp": true,"userLevel": 8},"sniffing": {"destOverride": ["http","tls"],"enabled": true,"routeOnly": false},"tag": "socks"}],
+                "log": {"loglevel": "warning"},
+                "outbounds": [
+                    {"mux": {"concurrency": -1,"enabled": false},"protocol": "vless","settings": {"vnext": [{"address": "172.64.144.74","port": 443,"users": [{"encryption": "none","flow": "","id": "68c89f56-3a15-46f2-9901-8c00a2546b97","level": 8}]}]},"streamSettings": {"network": "ws","security": "tls","tlsSettings": {"allowInsecure": false,"serverName": "rukawa.pages.dev","show": false},"wsSettings": {"headers": {"Host": "rukawa.pages.dev"},"path": "/Tel-@V2rayAlpha"}},"tag": "proxy"},
+                    {"protocol": "freedom","settings": {"domainStrategy": "UseIP"},"tag": "direct"},
+                    {"protocol": "blackhole","settings": {"response": {"type": "http"}},"tag": "block"}
+                ],
+                "remarks": "France 🇫🇷",
+                "routing": {"domainStrategy": "AsIs","rules": [{"ip": ["1.1.1.1"],"outboundTag": "proxy","port": "53","type": "field"},{"ip": ["223.5.5.5"],"outboundTag": "direct","port": "53","type": "field"},{"domain": ["domain:googleapis.cn","domain:gstatic.com"],"outboundTag": "proxy","type": "field"},{"network": "udp","outboundTag": "block","port": "443","type": "field"},{"ip": ["geoip:private"],"outboundTag": "direct","type": "field"},{"domain": ["geosite:private"],"outboundTag": "direct","type": "field"},{"ip": ["223.5.5.5","223.6.6.6","2400:3200::1","2400:3200:baba::1","119.29.29.29","1.12.12.12","120.53.53.53","2402:4e00::","2402:4e00:1::","180.76.76.76","2400:da00::6666","114.114.114.114","114.114.115.115","114.114.114.119","114.114.115.119","114.114.114.110","114.114.115.110","180.184.1.1","180.184.2.2","101.226.4.6","218.30.118.6","123.125.81.6","140.207.198.6","1.2.4.8","210.2.4.8","52.80.66.66","117.50.22.22","2400:7fc0:849e:200::4","2404:c2c0:85d8:901::4","117.50.10.10","52.80.52.52","2400:7fc0:849e:200::8","2404:c2c0:85d8:901::8","117.50.60.30","52.80.60.30"],"outboundTag": "direct","type": "field"},{"domain": ["domain:alidns.com","domain:doh.pub","domain:dot.pub","domain:360.cn","domain:onedns.net"],"outboundTag": "direct","type": "field"},{"ip": ["geoip:cn"],"outboundTag": "direct","type": "field"},{"domain": ["geosite:cn"],"outboundTag": "direct","type": "field"}]}
+            },
+
+            {
+                "dns": {
+                    "hosts": {
+                        "domain:googleapis.cn": "googleapis.com",
+                        "dns.alidns.com": ["223.5.5.5","223.6.6.6","2400:3200::1","2400:3200:baba::1"],
+                        "one.one.one.one": ["1.1.1.1","1.0.0.1","2606:4700:4700::1111","2606:4700:4700::1001"],
+                        "dns.cloudflare.com": ["104.16.132.229","104.16.133.229","2606:4700::6810:84e5","2606:4700::6810:85e5"],
+                        "cloudflare-dns.com": ["104.16.248.249","104.16.249.249","2606:4700::6810:f8f9","2606:4700::6810:f9f9"],
+                        "dot.pub": ["1.12.12.12","120.53.53.53"],
+                        "dns.google": ["8.8.8.8","8.8.4.4","2001:4860:4860::8888","2001:4860:4860::8844"],
+                        "dns.quad9.net": ["9.9.9.9","149.112.112.112","2620:fe::fe","2620:fe::9"],
+                        "common.dot.dns.yandex.net": ["77.88.8.8","77.88.8.1","2a02:6b8::feed:0ff","2a02:6b8:0:1::feed:0ff"]
+                    },
+                    "servers": [
+                        "1.1.1.1",
+                        {"address": "1.1.1.1", "domains": ["domain:googleapis.cn","domain:gstatic.com"]},
+                        {"address": "223.5.5.5", "domains": ["domain:alidns.com","domain:doh.pub","domain:dot.pub","domain:360.cn","domain:onedns.net","geosite:cn"], "expectIPs": ["geoip:cn"], "skipFallback": true}
+                    ]
+                },
+                "inbounds": [{"listen": "127.0.0.1","port": 10808,"protocol": "socks","settings": {"auth": "noauth","udp": true,"userLevel": 8},"sniffing": {"destOverride": ["http","tls"],"enabled": true,"routeOnly": false},"tag": "socks"}],
+                "log": {"loglevel": "warning"},
+                "outbounds": [
+                    {"mux": {"concurrency": -1,"enabled": false},"protocol": "vless","settings": {"vnext": [{"address": "www.speedtest.net","port": 443,"users": [{"encryption": "none","flow": "","id": "98d677be-b14b-4c14-a96b-4a39a3be645a","level": 8}]}]},"streamSettings": {"network": "ws","security": "tls","sockopt": {"domainStrategy": "UseIPv4v6"},"tlsSettings": {"allowInsecure": false,"alpn": ["http/1.1"],"fingerprint": "chrome","serverName": "t86y6leiyaph7tsvb170x7vfx0-3dvh3.vrezht08.workers.dev","show": false},"wsSettings": {"headers": {"Host": "t86y6leiyaph7tsvb170x7vfx0-3dvh3.vrezht08.workers.dev"},"path": "/eyJqdW5rIjoiZHJmTGlJSmciLCJwcm90b2NvbCI6InZsIiwibW9kZSI6InByb3h5aXAiLCJwYW5lbElQcyI6W119?ed"}},"tag": "proxy"},
+                    {"protocol": "freedom","settings": {"domainStrategy": "UseIP"},"tag": "direct"},
+                    {"protocol": "blackhole","settings": {"response": {"type": "http"}},"tag": "block"}
+                ],
+                "remarks": "Germany 🇩🇪",
+                "routing": {"domainStrategy": "AsIs","rules": [{"ip": ["1.1.1.1"],"outboundTag": "proxy","port": "53","type": "field"},{"ip": ["223.5.5.5"],"outboundTag": "direct","port": "53","type": "field"},{"domain": ["domain:googleapis.cn","domain:gstatic.com"],"outboundTag": "proxy","type": "field"},{"network": "udp","outboundTag": "block","port": "443","type": "field"},{"ip": ["geoip:private"],"outboundTag": "direct","type": "field"},{"domain": ["geosite:private"],"outboundTag": "direct","type": "field"},{"ip": ["223.5.5.5","223.6.6.6","2400:3200::1","2400:3200:baba::1","119.29.29.29","1.12.12.12","120.53.53.53","2402:4e00::","2402:4e00:1::","180.76.76.76","2400:da00::6666","114.114.114.114","114.114.115.115","114.114.114.119","114.114.115.119","114.114.114.110","114.114.115.110","180.184.1.1","180.184.2.2","101.226.4.6","218.30.118.6","123.125.81.6","140.207.198.6","1.2.4.8","210.2.4.8","52.80.66.66","117.50.22.22","2400:7fc0:849e:200::4","2404:c2c0:85d8:901::4","117.50.10.10","52.80.52.52","2400:7fc0:849e:200::8","2404:c2c0:85d8:901::8","117.50.60.30","52.80.60.30"],"outboundTag": "direct","type": "field"},{"domain": ["domain:alidns.com","domain:doh.pub","domain:dot.pub","domain:360.cn","domain:onedns.net"],"outboundTag": "direct","type": "field"},{"ip": ["geoip:cn"],"outboundTag": "direct","type": "field"},{"domain": ["geosite:cn"],"outboundTag": "direct","type": "field"}]}
+            },
+
+            {
+                "dns": {
+                    "hosts": {
+                        "domain:googleapis.cn": "googleapis.com",
+                        "dns.alidns.com": ["223.5.5.5","223.6.6.6","2400:3200::1","2400:3200:baba::1"],
+                        "one.one.one.one": ["1.1.1.1","1.0.0.1","2606:4700:4700::1111","2606:4700:4700::1001"],
+                        "dns.cloudflare.com": ["104.16.132.229","104.16.133.229","2606:4700::6810:84e5","2606:4700::6810:85e5"],
+                        "cloudflare-dns.com": ["104.16.248.249","104.16.249.249","2606:4700::6810:f8f9","2606:4700::6810:f9f9"],
+                        "dot.pub": ["1.12.12.12","120.53.53.53"],
+                        "dns.google": ["8.8.8.8","8.8.4.4","2001:4860:4860::8888","2001:4860:4860::8844"],
+                        "dns.quad9.net": ["9.9.9.9","149.112.112.112","2620:fe::fe","2620:fe::9"],
+                        "common.dot.dns.yandex.net": ["77.88.8.8","77.88.8.1","2a02:6b8::feed:0ff","2a02:6b8:0:1::feed:0ff"]
+                    },
+                    "servers": [
+                        "1.1.1.1",
+                        {"address": "1.1.1.1", "domains": ["domain:googleapis.cn","domain:gstatic.com"]},
+                        {"address": "223.5.5.5", "domains": ["domain:alidns.com","domain:doh.pub","domain:dot.pub","domain:360.cn","domain:onedns.net","geosite:cn"], "expectIPs": ["geoip:cn"], "skipFallback": true}
+                    ]
+                },
+                "inbounds": [{"listen": "127.0.0.1","port": 10808,"protocol": "socks","settings": {"auth": "noauth","udp": true,"userLevel": 8},"sniffing": {"destOverride": ["http","tls"],"enabled": true,"routeOnly": false},"tag": "socks"}],
+                "log": {"loglevel": "warning"},
+                "outbounds": [
+                    {"mux": {"concurrency": -1,"enabled": false},"protocol": "vless","settings": {"vnext": [{"address": "37.139.42.234","port": 4443,"users": [{"encryption": "none","flow": "","id": "9cb2d5c5-c5e0-409b-ad3b-7c057b7971b1","level": 8}]}]},"streamSettings": {"network": "tcp","realitySettings": {"allowInsecure": false,"fingerprint": "chrome","publicKey": "-kDgSQgouE56cqDIDwgCco1LNQ-8q61WllL5egDI0yI","serverName": "yandex.ru","shortId": "6670","show": false},"security": "reality","tcpSettings": {"header": {"type": "none"}}},"tag": "proxy"},
+                    {"protocol": "freedom","settings": {"domainStrategy": "UseIP"},"tag": "direct"},
+                    {"protocol": "blackhole","settings": {"response": {"type": "http"}},"tag": "block"}
+                ],
+                "remarks": "Poland 🇵🇱",
+                "routing": {"domainStrategy": "AsIs","rules": [{"ip": ["1.1.1.1"],"outboundTag": "proxy","port": "53","type": "field"},{"ip": ["223.5.5.5"],"outboundTag": "direct","port": "53","type": "field"},{"domain": ["domain:googleapis.cn","domain:gstatic.com"],"outboundTag": "proxy","type": "field"},{"network": "udp","outboundTag": "block","port": "443","type": "field"},{"ip": ["geoip:private"],"outboundTag": "direct","type": "field"},{"domain": ["geosite:private"],"outboundTag": "direct","type": "field"},{"ip": ["223.5.5.5","223.6.6.6","2400:3200::1","2400:3200:baba::1","119.29.29.29","1.12.12.12","120.53.53.53","2402:4e00::","2402:4e00:1::","180.76.76.76","2400:da00::6666","114.114.114.114","114.114.115.115","114.114.114.119","114.114.115.119","114.114.114.110","114.114.115.110","180.184.1.1","180.184.2.2","101.226.4.6","218.30.118.6","123.125.81.6","140.207.198.6","1.2.4.8","210.2.4.8","52.80.66.66","117.50.22.22","2400:7fc0:849e:200::4","2404:c2c0:85d8:901::4","117.50.10.10","52.80.52.52","2400:7fc0:849e:200::8","2404:c2c0:85d8:901::8","117.50.60.30","52.80.60.30"],"outboundTag": "direct","type": "field"},{"domain": ["domain:alidns.com","domain:doh.pub","domain:dot.pub","domain:360.cn","domain:onedns.net"],"outboundTag": "direct","type": "field"},{"ip": ["geoip:cn"],"outboundTag": "direct","type": "field"},{"domain": ["geosite:cn"],"outboundTag": "direct","type": "field"}]}
+            },
+
+            {
+                "dns": {
+                    "hosts": {
+                        "domain:googleapis.cn": "googleapis.com",
+                        "dns.alidns.com": ["223.5.5.5","223.6.6.6","2400:3200::1","2400:3200:baba::1"],
+                        "one.one.one.one": ["1.1.1.1","1.0.0.1","2606:4700:4700::1111","2606:4700:4700::1001"],
+                        "dns.cloudflare.com": ["104.16.132.229","104.16.133.229","2606:4700::6810:84e5","2606:4700::6810:85e5"],
+                        "cloudflare-dns.com": ["104.16.248.249","104.16.249.249","2606:4700::6810:f8f9","2606:4700::6810:f9f9"],
+                        "dot.pub": ["1.12.12.12","120.53.53.53"],
+                        "dns.google": ["8.8.8.8","8.8.4.4","2001:4860:4860::8888","2001:4860:4860::8844"],
+                        "dns.quad9.net": ["9.9.9.9","149.112.112.112","2620:fe::fe","2620:fe::9"],
+                        "common.dot.dns.yandex.net": ["77.88.8.8","77.88.8.1","2a02:6b8::feed:0ff","2a02:6b8:0:1::feed:0ff"],
+                        "cfcdn.zopli.ir": "45.130.125.107"
+                    },
+                    "servers": [
+                        "1.1.1.1",
+                        {"address": "1.1.1.1", "domains": ["domain:googleapis.cn","domain:gstatic.com"]},
+                        {"address": "223.5.5.5", "domains": ["domain:alidns.com","domain:doh.pub","domain:dot.pub","domain:360.cn","domain:onedns.net","geosite:cn"], "expectIPs": ["geoip:cn"], "skipFallback": true}
+                    ]
+                },
+                "inbounds": [{"listen": "127.0.0.1","port": 10808,"protocol": "socks","settings": {"auth": "noauth","udp": true,"userLevel": 8},"sniffing": {"destOverride": ["http","tls"],"enabled": true,"routeOnly": false},"tag": "socks"}],
+                "log": {"loglevel": "warning"},
+                "outbounds": [
+                    {"mux": {"concurrency": -1,"enabled": false},"protocol": "vless","settings": {"vnext": [{"address": "cfcdn.zopli.ir","port": 443,"users": [{"encryption": "none","flow": "","id": "98d677be-b14b-4c14-a96b-4a39a3be645a","level": 8}]}]},"streamSettings": {"network": "ws","security": "tls","sockopt": {"domainStrategy": "UseIPv4v6"},"tlsSettings": {"allowInsecure": false,"alpn": ["http/1.1"],"fingerprint": "chrome","serverName": "t86y6leiyaph7tsvb170x7vfx0-3dvh3.vrezht08.workers.dev","show": false},"wsSettings": {"headers": {"Host": "t86y6leiyaph7tsvb170x7vfx0-3dvh3.vrezht08.workers.dev"},"path": "/eyJqdW5rIjoiZHJmTGlJSmciLCJwcm90b2NvbCI6InZsIiwibW9kZSI6InByb3h5aXAiLCJwYW5lbElQcyI6W119?ed=2560"}},"tag": "proxy"},
+                    {"protocol": "freedom","settings": {"domainStrategy": "UseIP"},"tag": "direct"},
+                    {"protocol": "blackhole","settings": {"response": {"type": "http"}},"tag": "block"}
+                ],
+                "remarks": "Azerbaijan 🇦🇿",
+                "routing": {"domainStrategy": "AsIs","rules": [{"ip": ["1.1.1.1"],"outboundTag": "proxy","port": "53","type": "field"},{"ip": ["223.5.5.5"],"outboundTag": "direct","port": "53","type": "field"},{"domain": ["domain:googleapis.cn","domain:gstatic.com"],"outboundTag": "proxy","type": "field"},{"network": "udp","outboundTag": "block","port": "443","type": "field"},{"ip": ["geoip:private"],"outboundTag": "direct","type": "field"},{"domain": ["geosite:private"],"outboundTag": "direct","type": "field"},{"ip": ["223.5.5.5","223.6.6.6","2400:3200::1","2400:3200:baba::1","119.29.29.29","1.12.12.12","120.53.53.53","2402:4e00::","2402:4e00:1::","180.76.76.76","2400:da00::6666","114.114.114.114","114.114.115.115","114.114.114.119","114.114.115.119","114.114.114.110","114.114.115.110","180.184.1.1","180.184.2.2","101.226.4.6","218.30.118.6","123.125.81.6","140.207.198.6","1.2.4.8","210.2.4.8","52.80.66.66","117.50.22.22","2400:7fc0:849e:200::4","2404:c2c0:85d8:901::4","117.50.10.10","52.80.52.52","2400:7fc0:849e:200::8","2404:c2c0:85d8:901::8","117.50.60.30","52.80.60.30"],"outboundTag": "direct","type": "field"},{"domain": ["domain:alidns.com","domain:doh.pub","domain:dot.pub","domain:360.cn","domain:onedns.net"],"outboundTag": "direct","type": "field"},{"ip": ["geoip:cn"],"outboundTag": "direct","type": "field"},{"domain": ["geosite:cn"],"outboundTag": "direct","type": "field"}]}
+            },
+
+            {
+                "dns": {
+                    "hosts": {
+                        "domain:googleapis.cn": "googleapis.com",
+                        "dns.alidns.com": ["223.5.5.5","223.6.6.6","2400:3200::1","2400:3200:baba::1"],
+                        "one.one.one.one": ["1.1.1.1","1.0.0.1","2606:4700:4700::1111","2606:4700:4700::1001"],
+                        "dns.cloudflare.com": ["104.16.132.229","104.16.133.229","2606:4700::6810:84e5","2606:4700::6810:85e5"],
+                        "cloudflare-dns.com": ["104.16.248.249","104.16.249.249","2606:4700::6810:f8f9","2606:4700::6810:f9f9"],
+                        "dot.pub": ["1.12.12.12","120.53.53.53"],
+                        "dns.google": ["8.8.8.8","8.8.4.4","2001:4860:4860::8888","2001:4860:4860::8844"],
+                        "dns.quad9.net": ["9.9.9.9","149.112.112.112","2620:fe::fe","2620:fe::9"],
+                        "common.dot.dns.yandex.net": ["77.88.8.8","77.88.8.1","2a02:6b8::feed:0ff","2a02:6b8:0:1::feed:0ff"]
+                    },
+                    "servers": [
+                        "1.1.1.1",
+                        {"address": "1.1.1.1", "domains": ["domain:googleapis.cn","domain:gstatic.com"]},
+                        {"address": "223.5.5.5", "domains": ["domain:alidns.com","domain:doh.pub","domain:dot.pub","domain:360.cn","domain:onedns.net","geosite:cn"], "expectIPs": ["geoip:cn"], "skipFallback": true}
+                    ]
+                },
+                "inbounds": [{"listen": "127.0.0.1","port": 10808,"protocol": "socks","settings": {"auth": "noauth","udp": true,"userLevel": 8},"sniffing": {"destOverride": ["http","tls"],"enabled": true,"routeOnly": false},"tag": "socks"}],
+                "log": {"loglevel": "warning"},
+                "outbounds": [
+                    {"mux": {"concurrency": -1,"enabled": false},"protocol": "shadowsocks","settings": {"servers": [{"address": "82.38.31.61","level": 8,"method": "chacha20-ietf-poly1305","ota": false,"password": "oZIoA69Q8yhcQV8ka3Pa3A","port": 8080}]},"streamSettings": {"network": "tcp","tcpSettings": {"header": {"type": "none"}}},"tag": "proxy"},
+                    {"protocol": "freedom","settings": {"domainStrategy": "UseIP"},"tag": "direct"},
+                    {"protocol": "blackhole","settings": {"response": {"type": "http"}},"tag": "block"}
+                ],
+                "remarks": "Netherlands 🇳🇱",
+                "routing": {"domainStrategy": "AsIs","rules": [{"ip": ["1.1.1.1"],"outboundTag": "proxy","port": "53","type": "field"},{"ip": ["223.5.5.5"],"outboundTag": "direct","port": "53","type": "field"},{"domain": ["domain:googleapis.cn","domain:gstatic.com"],"outboundTag": "proxy","type": "field"},{"network": "udp","outboundTag": "block","port": "443","type": "field"},{"ip": ["geoip:private"],"outboundTag": "direct","type": "field"},{"domain": ["geosite:private"],"outboundTag": "direct","type": "field"},{"ip": ["223.5.5.5","223.6.6.6","2400:3200::1","2400:3200:baba::1","119.29.29.29","1.12.12.12","120.53.53.53","2402:4e00::","2402:4e00:1::","180.76.76.76","2400:da00::6666","114.114.114.114","114.114.115.115","114.114.114.119","114.114.115.119","114.114.114.110","114.114.115.110","180.184.1.1","180.184.2.2","101.226.4.6","218.30.118.6","123.125.81.6","140.207.198.6","1.2.4.8","210.2.4.8","52.80.66.66","117.50.22.22","2400:7fc0:849e:200::4","2404:c2c0:85d8:901::4","117.50.10.10","52.80.52.52","2400:7fc0:849e:200::8","2404:c2c0:85d8:901::8","117.50.60.30","52.80.60.30"],"outboundTag": "direct","type": "field"},{"domain": ["domain:alidns.com","domain:doh.pub","domain:dot.pub","domain:360.cn","domain:onedns.net"],"outboundTag": "direct","type": "field"},{"ip": ["geoip:cn"],"outboundTag": "direct","type": "field"},{"domain": ["geosite:cn"],"outboundTag": "direct","type": "field"}]}
+            },
+
+            {
+                "dns": {
+                    "hosts": {
+                        "domain:googleapis.cn": "googleapis.com",
+                        "dns.alidns.com": ["223.5.5.5","223.6.6.6","2400:3200::1","2400:3200:baba::1"],
+                        "one.one.one.one": ["1.1.1.1","1.0.0.1","2606:4700:4700::1111","2606:4700:4700::1001"],
+                        "dns.cloudflare.com": ["104.16.132.229","104.16.133.229","2606:4700::6810:84e5","2606:4700::6810:85e5"],
+                        "cloudflare-dns.com": ["104.16.248.249","104.16.249.249","2606:4700::6810:f8f9","2606:4700::6810:f9f9"],
+                        "dot.pub": ["1.12.12.12","120.53.53.53"],
+                        "dns.google": ["8.8.8.8","8.8.4.4","2001:4860:4860::8888","2001:4860:4860::8844"],
+                        "dns.quad9.net": ["9.9.9.9","149.112.112.112","2620:fe::fe","2620:fe::9"],
+                        "common.dot.dns.yandex.net": ["77.88.8.8","77.88.8.1","2a02:6b8::feed:0ff","2a02:6b8:0:1::feed:0ff"]
+                    },
+                    "servers": [
+                        "1.1.1.1",
+                        {"address": "1.1.1.1", "domains": ["domain:googleapis.cn","domain:gstatic.com"]},
+                        {"address": "223.5.5.5", "domains": ["domain:alidns.com","domain:doh.pub","domain:dot.pub","domain:360.cn","domain:onedns.net","geosite:cn"], "expectIPs": ["geoip:cn"], "skipFallback": true}
+                    ]
+                },
+                "inbounds": [{"listen": "127.0.0.1","port": 10808,"protocol": "socks","settings": {"auth": "noauth","udp": true,"userLevel": 8},"sniffing": {"destOverride": ["http","tls"],"enabled": true,"routeOnly": false},"tag": "socks"}],
+                "log": {"loglevel": "warning"},
+                "outbounds": [
+                    {"mux": {"concurrency": -1,"enabled": false},"protocol": "vless","settings": {"vnext": [{"address": "108.162.198.154","port": 443,"users": [{"encryption": "none","flow": "","id": "d89d6641-3b1a-4f51-a194-9c9109fd21b6","level": 8}]}]},"streamSettings": {"network": "ws","security": "tls","tlsSettings": {"allowInsecure": false,"fingerprint": "chrome","serverName": "DiprOX.pages.DEV","show": false},"wsSettings": {"headers": {"Host": "diprox.pages.dev"},"path": "/Tel-@V2rayAlpha"}},"tag": "proxy"},
+                    {"protocol": "freedom","settings": {"domainStrategy": "UseIP"},"tag": "direct"},
+                    {"protocol": "blackhole","settings": {"response": {"type": "http"}},"tag": "block"}
+                ],
+                "remarks": "Netherlands 🇳🇱",
+                "routing": {"domainStrategy": "AsIs","rules": [{"ip": ["1.1.1.1"],"outboundTag": "proxy","port": "53","type": "field"},{"ip": ["223.5.5.5"],"outboundTag": "direct","port": "53","type": "field"},{"domain": ["domain:googleapis.cn","domain:gstatic.com"],"outboundTag": "proxy","type": "field"},{"network": "udp","outboundTag": "block","port": "443","type": "field"},{"ip": ["geoip:private"],"outboundTag": "direct","type": "field"},{"domain": ["geosite:private"],"outboundTag": "direct","type": "field"},{"ip": ["223.5.5.5","223.6.6.6","2400:3200::1","2400:3200:baba::1","119.29.29.29","1.12.12.12","120.53.53.53","2402:4e00::","2402:4e00:1::","180.76.76.76","2400:da00::6666","114.114.114.114","114.114.115.115","114.114.114.119","114.114.115.119","114.114.114.110","114.114.115.110","180.184.1.1","180.184.2.2","101.226.4.6","218.30.118.6","123.125.81.6","140.207.198.6","1.2.4.8","210.2.4.8","52.80.66.66","117.50.22.22","2400:7fc0:849e:200::4","2404:c2c0:85d8:901::4","117.50.10.10","52.80.52.52","2400:7fc0:849e:200::8","2404:c2c0:85d8:901::8","117.50.60.30","52.80.60.30"],"outboundTag": "direct","type": "field"},{"domain": ["domain:alidns.com","domain:doh.pub","domain:dot.pub","domain:360.cn","domain:onedns.net"],"outboundTag": "direct","type": "field"},{"ip": ["geoip:cn"],"outboundTag": "direct","type": "field"},{"domain": ["geosite:cn"],"outboundTag": "direct","type": "field"}]}
             }
         ];
 
-        const countryEmojis = ["🇸🇪", "🇫🇷", "🇩🇪", "🇫🇷", "🇦🇿", "🇩🇪", "🇩🇪", "🇩🇪"];
+        const countryEmojis = ["🇨🇾", "🇺🇲", "🇨🇦", "🇫🇷", "🇩🇪", "🇵🇱", "🇦🇿", "🇳🇱", "🇳🇱"];
 
-        const START_TIME = Date.parse('2026-02-01T08:00:00Z');
+        const START_TIME = Date.parse('2026-02-06T13:00:00Z');
         const PERIOD_MS = 7 * 24 * 60 * 60 * 1000;
-        const MAX_VOLUME_GB = 50000;
+        const MAX_VOLUME_GB = 100000;
 
         const pattern = [
             0.3194, 0.3946, 0.3605, 0.3062, 0.3953, 0.3326, 0.3767, 0.3047,
@@ -465,7 +657,7 @@
         }
 
         function copySubLink() {
-            const subLink = "https://raw.githubusercontent.com/danesh1118/Sbdodheegebd8ee8urbdodhdoehdjtotjeiw8e74hfodheoheodbri76hrodudohwksosndofjbtofifofkmdr/refs/heads/main/Sub";
+            const subLink = "https://raw.githubusercontent.com/danesh1118/Sbdodheegebd8ee8uhdoehdjtotjeiw8e74hfo8rhrorhrndohejw7brofhfodhe8yrjrofjfk/refs/heads/main/Sub";
             navigator.clipboard.writeText(subLink).then(() => {
                 alert('لینک سابسکریپشن با موفقیت کپی شد!');
             }).catch(() => {
@@ -515,7 +707,7 @@
             <div class="compact-grid">
                 <div class="card">
                     <h3>حجم باقی‌مانده</h3>
-                    <div class="value" id="volume-remaining">50000.0000 GB</div>
+                    <div class="value" id="volume-remaining">100000.0000 GB</div>
                     <div class="progress-bar"><div class="progress" id="volume-progress"></div></div>
                     <div class="subtext" id="volume-consumed-text">مصرف شده: 0.0000 GB</div>
                 </div>
@@ -580,14 +772,15 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr><td>سوئد VIP</td><td><img src="https://flagcdn.com/se.svg" class="flag" alt="SE"> سوئد</td><td>52 ms</td><td>21%</td><td><span class="status-active">فعال</span></td><td><button class="copy-btn" onclick="copyConfig(0)">کپی کانفیگ</button></td></tr>
-                            <tr><td>فرانسه VIP ۱</td><td><img src="https://flagcdn.com/fr.svg" class="flag" alt="FR"> فرانسه</td><td>55 ms</td><td>19%</td><td><span class="status-active">فعال</span></td><td><button class="copy-btn" onclick="copyConfig(1)">کپی کانفیگ</button></td></tr>
-                            <tr><td>آلمان VIP ۱</td><td><img src="https://flagcdn.com/de.svg" class="flag" alt="DE"> آلمان</td><td>38 ms</td><td>22%</td><td><span class="status-active">فعال</span></td><td><button class="copy-btn" onclick="copyConfig(2)">کپی کانفیگ</button></td></tr>
-                            <tr><td>فرانسه VIP ۲</td><td><img src="https://flagcdn.com/fr.svg" class="flag" alt="FR"> فرانسه</td><td>58 ms</td><td>17%</td><td><span class="status-active">فعال</span></td><td><button class="copy-btn" onclick="copyConfig(3)">کپی کانفیگ</button></td></tr>
-                            <tr><td>آذربایجان VIP (Trojan)</td><td><img src="https://flagcdn.com/az.svg" class="flag" alt="AZ"> آذربایجان</td><td>70 ms</td><td>24%</td><td><span class="status-active">فعال</span></td><td><button class="copy-btn" onclick="copyConfig(4)">کپی کانفیگ</button></td></tr>
-                            <tr><td>آلمان VIP ۲</td><td><img src="https://flagcdn.com/de.svg" class="flag" alt="DE"> آلمان</td><td>40 ms</td><td>20%</td><td><span class="status-active">فعال</span></td><td><button class="copy-btn" onclick="copyConfig(5)">کپی کانفیگ</button></td></tr>
-                            <tr><td>آلمان VIP جدید ۱</td><td><img src="https://flagcdn.com/de.svg" class="flag" alt="DE"> آلمان</td><td>42 ms</td><td>23%</td><td><span class="status-active">فعال</span></td><td><button class="copy-btn" onclick="copyConfig(6)">کپی کانفیگ</button></td></tr>
-                            <tr><td>آلمان VIP جدید ۲</td><td><img src="https://flagcdn.com/de.svg" class="flag" alt="DE"> آلمان</td><td>39 ms</td><td>19%</td><td><span class="status-active">فعال</span></td><td><button class="copy-btn" onclick="copyConfig(7)">کپی کانفیگ</button></td></tr>
+                            <tr><td>Cybrus VIP</td><td><img src="https://flagcdn.com/cy.svg" class="flag" alt="CY"> قبرس</td><td>78 ms</td><td>18%</td><td><span class="status-active">فعال</span></td><td><button class="copy-btn" onclick="copyConfig(0)">کپی کانفیگ</button></td></tr>
+                            <tr><td>USA VIP</td><td><img src="https://flagcdn.com/us.svg" class="flag" alt="US"> آمریکا</td><td>112 ms</td><td>29%</td><td><span class="status-active">فعال</span></td><td><button class="copy-btn" onclick="copyConfig(1)">کپی کانفیگ</button></td></tr>
+                            <tr><td>Canada VIP</td><td><img src="https://flagcdn.com/ca.svg" class="flag" alt="CA"> کانادا</td><td>105 ms</td><td>24%</td><td><span class="status-active">فعال</span></td><td><button class="copy-btn" onclick="copyConfig(2)">کپی کانفیگ</button></td></tr>
+                            <tr><td>France VIP</td><td><img src="https://flagcdn.com/fr.svg" class="flag" alt="FR"> فرانسه</td><td>52 ms</td><td>21%</td><td><span class="status-active">فعال</span></td><td><button class="copy-btn" onclick="copyConfig(3)">کپی کانفیگ</button></td></tr>
+                            <tr><td>Germany VIP</td><td><img src="https://flagcdn.com/de.svg" class="flag" alt="DE"> آلمان</td><td>38 ms</td><td>19%</td><td><span class="status-active">فعال</span></td><td><button class="copy-btn" onclick="copyConfig(4)">کپی کانفیگ</button></td></tr>
+                            <tr><td>Poland VIP</td><td><img src="https://flagcdn.com/pl.svg" class="flag" alt="PL"> لهستان</td><td>55 ms</td><td>23%</td><td><span class="status-active">فعال</span></td><td><button class="copy-btn" onclick="copyConfig(5)">کپی کانفیگ</button></td></tr>
+                            <tr><td>Azerbaijan VIP</td><td><img src="https://flagcdn.com/az.svg" class="flag" alt="AZ"> آذربایجان</td><td>68 ms</td><td>26%</td><td><span class="status-active">فعال</span></td><td><button class="copy-btn" onclick="copyConfig(6)">کپی کانفیگ</button></td></tr>
+                            <tr><td>Netherlands VIP ۱</td><td><img src="https://flagcdn.com/nl.svg" class="flag" alt="NL"> هلند</td><td>45 ms</td><td>17%</td><td><span class="status-active">فعال</span></td><td><button class="copy-btn" onclick="copyConfig(7)">کپی کانفیگ</button></td></tr>
+                            <tr><td>Netherlands VIP ۲</td><td><img src="https://flagcdn.com/nl.svg" class="flag" alt="NL"> هلند</td><td>47 ms</td><td>20%</td><td><span class="status-active">فعال</span></td><td><button class="copy-btn" onclick="copyConfig(8)">کپی کانفیگ</button></td></tr>
                         </tbody>
                     </table>
                 </div>
